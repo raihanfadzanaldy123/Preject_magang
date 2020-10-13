@@ -14,52 +14,58 @@
         public function index()
         {
             $user = $this->session->userdata("nama");
-            $this->load->view('templates/header');
-
             if (isset($_SESSION['nama']) && $user == "admin") {
-                $this->load->view('admin/data');
-            }
-            else
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar-admin');
+                $this->load->view('login/index');
+                $this->load->view('templates/footer');
+        }
+            else if(isset($_SESSION['nama']))
             {
-                $this->load->view('admin/index');
+                
             }
-            $this->load->view('templates/footer');
         }
 
         public function login_action()
         {
-            $user = $this->input->post('user');
             $email = $this->input->post('email');
             $pass = $this->input->post('pass');
             $where = array(
-                'username' => $user,
                 'email' => $email,
                 'password' => md5($pass)
                 );
             $cek = $this->Model_login->login($where)->num_rows();
+            $name = $this->Model_login->login_where($where);
             if($cek > 0){
     
                 $data_session = array(
-                    'nama' => $user,
+                    'nama' => $name,
                     'email' => $email,
                     'status' => "login"
                     );
     
                 $this->session->set_userdata($data_session);
-    
-                redirect(base_url());
+                
+                $user = $this->session->userdata("nama");
+                if (isset($_SESSION['nama']) && $name == "admin") {
+                    redirect(base_url('Admin'));
+                }
+                else {
+                    redirect(base_url());
+                }
+                
     
             }else{
-                echo "Username atau password salah !";
+                echo '<script>alert("Salah Password Atau Username");</script>';
             }
         }
 
-        function register()
-        {
-            $this->load->view('templates/header');
-            $this->load->view('admin/register.php');
-            $this->load->view('templates/footer');
-        }
+        // function register()
+        // {
+        //     $this->load->view('templates/header');
+        //     $this->load->view('login/register');
+        //     $this->load->view('templates/footer');
+        // }
 
         function register_action()
         {
@@ -83,6 +89,10 @@
             redirect(base_url());
         }
 
+        public function guru()
+        {
+            redirect(base_url('Guru'));
+        }
     }
     
 

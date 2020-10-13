@@ -1,102 +1,151 @@
 <?php
 
-    class Mahasiswa extends CI_Controller
+    class Guru extends CI_Controller
     {
 
         function __construct()
         {
             parent::__construct();
             $this->load->model('Model_guru');
+            $this->load->model('Model_login');
             $this->load->helper('url');
 
         }
 
         function index()
         {
-            $data['tampil'] = $this->Model_guru->tampil()->result();
+            $data['guru'] = $this->Model_guru->tampil_data()->result();
             $this->load->view('templates/header');
+            $this->load->view('templates/navbar-admin');
             $this->load->view('admin/guru/index', $data);
             $this->load->view('templates/footer');
         }
 
-        function create()
+        function tambah()
         {
             $this->load->view('templates/header');
-            $this->load->view('create');
+            $this->load->view('templates/navbar-admin');
+            $this->load->view('admin/guru/tambah');
             $this->load->view('templates/footer');
         }
 
-        function create_action()
+        function tambah_aksi()
         {
             $nama = $this->input->post('nama');
-            $nim = $this->input->post('nim');
             $tgl_lahir = $this->input->post('tgl_lahir');
-            $jurusan = $this->input->post('jurusan');
+            $jk = $this->input->post('jk');
+            $pekerjaan= $this->input->post('pekerjaan');
+            $lulusan= $this->input->post('lulusan');
+            $bayaran= $this->input->post('bayaran');
+
+            $user = $this->input->post('user');
+            $email = $this->input->post('email');
+            $pass = $this->input->post('pass');
+            
+            $data_login = array(
+                'username' => $user,
+                'email' => $email,
+                'password' => md5($pass)
+                );
+            $this->Model_login->register($data_login);
+            $last_id = $this->db->insert_id();
 
             $data = array(
-                    'nama' => $nama,
-                    'nim' => $nim,
-                    'tgl_lahir' => $tgl_lahir,
-                    'jurusan' => $jurusan
-                    );
-            
-            $this->Model_mahasiswa->buat($data);
-            redirect('mahasiswa');
+                'id_login' => $last_id,
+                'nama' => $nama,
+                'tgl_lahir' => $tgl_lahir,
+                'jk' => $jk,
+                'pekerjaan' => $pekerjaan,
+                'lulusan' => $lulusan,
+                'bayaran' => $bayaran,
+            );
+
+                $this->Model_guru->simpan_data($data);
+                $this->session->set_flashdata('pesan','Ditambahkan');
+                redirect('guru');
+    
         }
 
         function show($id)
         {
-            $id1 = intval($id);
-            $where = array('id' => $id1);
-            $data['lihat'] = $this->Model_mahasiswa->lihat_data($where)->result();
+            $where = array('id' =>$id);
+            $data['guru'] = $this->Model_guru->show_data($where)->result();
             $this->load->view('templates/header');
-            $this->load->view('view',$data);
+            $this->load->view('templates/navbar-admin');
+            $this->load->view('admin/guru/show',$data);
             $this->load->view('templates/footer');
 
         }
 
-        function update($id)
+        function show_aksi()
         {
-            $id1 = intval($id);
-            $where = array('id' => $id1);
-            $data['edit'] = $this->Model_mahasiswa->edit_cari($where)->result();
+            $nama = $this->input->post('nama');
+            $tgl_lahir = $this->input->post('tgl_lahir');
+            $jk = $this->input->post('jk');
+            $pekerjaan= $this->input->post('pekerjaan');
+            $lulusan= $this->input->post('lulusan');
+            $bayaran= $this->input->post('bayaran');
+
+            $data = array(
+                'nama' => $nama,
+                'tgl_lahir' => $tgl_lahir,
+                'jk' => $jk,
+                'pekerjaan' => $pekerjaan,
+                'lulusan' => $lulusan,
+                'bayaran' => $bayaran,
+            );
+    
+                $this->Model_guru->simpan_data($data);
+
+                redirect('guru');
+        }
+
+        function edit($id)
+        {
+            $where = array('id' =>$id);
+            $data['guru'] = $this->Model_guru->edit_data($where)->result();
             $this->load->view('templates/header');
-            $this->load->view('update',$data);
+            $this->load->view('templates/navbar-admin');
+            $this->load->view('admin/guru/edit',$data);
             $this->load->view('templates/footer');
 
         }
         
-        function update_action($id)
+        function edit_aksi()
         {
-            $id = $this->input->post('id');
             $nama = $this->input->post('nama');
-            $nim = $this->input->post('nim');
             $tgl_lahir = $this->input->post('tgl_lahir');
-            $jurusan = $this->input->post('jurusan');
-            
-            $where = array('id' => $id);
+            $jk = $this->input->post('jk');
+            $pekerjaan= $this->input->post('pekerjaan');
+            $lulusan= $this->input->post('lulusan');
+            $bayaran= $this->input->post('bayaran');
 
             $data = array(
                 'nama' => $nama,
-                'nim' => $nim,
                 'tgl_lahir' => $tgl_lahir,
-                'jurusan' => $jurusan
-                );
+                'jk' => $jk,
+                'pekerjaan' => $pekerjaan,
+                'lulusan' => $lulusan,
+                'bayaran' => $bayaran
+            );
+    
+                $this->Model_guru->simpan_data($data);
+                $this->session->set_flashdata('pesan','Diubah');
 
-            $this->Model_mahasiswa->edit_data($where,$data);
-
-            redirect('mahasiswa');
+    
+                redirect('guru');
 
         }
 
         public function delete($id)
         {
-            $where = array('id'=>$id);
-            $this->Model_mahasiswa->hapus($where);
-            redirect('mahasiswa');
+            $where = array('id' =>$id);
+            $this->Model_guru->hapus_data($where);
+            $this->session->set_flashdata('pesan','Dihapus');
+            redirect('guru');
         }
         
     }
 
 
-?>
+?>s
