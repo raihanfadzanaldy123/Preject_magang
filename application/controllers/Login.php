@@ -47,7 +47,7 @@
                 $this->session->set_userdata($data_session);
                 
                 $user = $this->session->userdata("nama");
-                if (isset($_SESSION['nama']) && $name == "admin") {
+                if (isset($_SESSION['nama']) && $user == "admin") {
                     redirect(base_url('Admin'));
                 }
                 else {
@@ -73,13 +73,27 @@
             $email = $this->input->post('email');
             $pass = $this->input->post('pass');
 
+            $nama = $this->input->post('nama');
+            $hp = $this->input->post('hp');
+
             $data = array(
                     'username' => $user,
                     'email' => $email,
                     'password' => md5($pass)
                     );
-            
             $this->Model_login->register($data);
+            $id = $this->db->insert_id();
+
+            
+            $data1 = array(
+                'id_login' => $id,
+                'nama' => $nama,
+                'email' => $email,
+                'hp' => $hp
+                );
+
+            
+            $this->Model_pengguna->simpan_data($data1);
             redirect(base_url());
         }
 
