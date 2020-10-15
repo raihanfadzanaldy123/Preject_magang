@@ -9,16 +9,23 @@
             $this->load->model('Model_guru');
             $this->load->model('Model_login');
             $this->load->helper('url');
-
         }
 
         function index()
         {
-            $data['guru'] = $this->Model_guru->tampil_data()->result();
-            $this->load->view('templates/header');
-            $this->load->view('templates/navbar-admin');
-            $this->load->view('admin/guru/index', $data);
-            $this->load->view('templates/footer');
+
+            $user = $this->session->userdata("nama");
+            if (isset($_SESSION['nama']) && $user == "admin") {
+                $data['guru'] = $this->Model_guru->tampil_data()->result();
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar-admin');
+                $this->load->view('admin/guru/index', $data);
+                $this->load->view('templates/footer'); 
+            }
+            else {
+                    redirect(base_url());
+                }
+            
         }
 
         function tambah()
@@ -77,29 +84,6 @@
 
         }
 
-        function show_aksi()
-        {
-            $nama = $this->input->post('nama');
-            $tgl_lahir = $this->input->post('tgl_lahir');
-            $jk = $this->input->post('jk');
-            $pekerjaan= $this->input->post('pekerjaan');
-            $lulusan= $this->input->post('lulusan');
-            $bayaran= $this->input->post('bayaran');
-
-            $data = array(
-                'nama' => $nama,
-                'tgl_lahir' => $tgl_lahir,
-                'jk' => $jk,
-                'pekerjaan' => $pekerjaan,
-                'lulusan' => $lulusan,
-                'bayaran' => $bayaran,
-            );
-    
-                $this->Model_guru->simpan_data($data);
-
-                redirect('guru');
-        }
-
         function edit($id)
         {
             $where = array('id' =>$id);
@@ -113,6 +97,7 @@
         
         function edit_aksi()
         {
+            $id = $this->input->post('id');
             $nama = $this->input->post('nama');
             $tgl_lahir = $this->input->post('tgl_lahir');
             $jk = $this->input->post('jk');
@@ -128,8 +113,11 @@
                 'lulusan' => $lulusan,
                 'bayaran' => $bayaran
             );
+            $where = array(
+                'id' => $id
+            );
     
-                $this->Model_guru->simpan_data($data);
+                $this->Model_guru->update_data($where, $data);
                 $this->session->set_flashdata('pesan','Diubah');
 
     

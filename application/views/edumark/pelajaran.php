@@ -71,14 +71,9 @@
                             <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/edumark/img/courses/1.png')?>" alt="">
-                                                </a>
-                                            </div>
                                             <div class="courses_info">
                                                 <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
+                                                <h3><a href="<?= base_url('Home/courses-detail')?>">Mobile App design step by step <br>
                                                         from beginner</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">

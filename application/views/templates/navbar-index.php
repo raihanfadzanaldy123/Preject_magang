@@ -72,7 +72,7 @@
                             <input type="email" name="email" placeholder="Enter email">
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="pass" name="pass" placeholder="Password">
+                            <input type="password" name="pass" placeholder="Password">
                         </div>
                         <div class="col-xl-12">
                             <button type="submit" class="boxed_btn_orange">Sign in</button>
@@ -100,7 +100,7 @@
                         <input type="text" name="nama" placeholder="Nama">
                     </div>
                     <div class="col-xl-12 col-md-12">
-                        <input type="email" name="hp" placeholder="hp">
+                        <input type="number" name="hp" placeholder="hp">
                     </div>
                     <div class="col-xl-12 col-md-12">
                         <input type="text" name="user" placeholder="Username">

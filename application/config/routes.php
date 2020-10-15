@@ -56,3 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['guru'] = 'Guru';
 $route['admin'] = 'Admin';
 $route['login'] = 'Login';
+$route['materi'] = 'Materi';
+$route['latihan'] = 'Latihan';
+$route['pengguna'] = 'pengguna';

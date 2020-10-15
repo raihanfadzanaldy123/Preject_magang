@@ -8,125 +8,104 @@
             parent::__construct();
             $this->load->model('Model_pengguna');
             $this->load->helper('url');
+            
 
         }
 
-        
+        function index()
+        {
+            $user = $this->session->userdata("nama");
+            if (isset($_SESSION['nama']) && $user == "admin") {
+                $data['pengguna'] = $this->Model_pengguna->tampil_data()->result();
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar-admin');
+                $this->load->view('admin/pengguna/index', $data);
+                $this->load->view('templates/footer');   
+            }
+            else {
+                    redirect(base_url());
+                }
+            
+        }
+
+        function tambah()
+        {
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar-admin');
+            $this->load->view('admin/pengguna/tambah');
+            $this->load->view('templates/footer');
+        }
 
         function tambah_aksi()
         {
             $nama = $this->input->post('nama');
-            $tgl_lahir = $this->input->post('tgl_lahir');
-            $jk = $this->input->post('jk');
-            $pekerjaan= $this->input->post('pekerjaan');
-            $lulusan= $this->input->post('lulusan');
-            $bayaran= $this->input->post('bayaran');
-
-            $user = $this->input->post('user');
-            $email = $this->input->post('email');
-            $pass = $this->input->post('pass');
-            
-            $data_login = array(
-                'username' => $user,
-                'email' => $email,
-                'password' => md5($pass)
-                );
-            $this->Model_login->register($data_login);
-            $last_id = $this->db->insert_id();
+            $materi= $this->input->post('materi');
+            $deskripsi= $this->input->post('deskripsi');
 
             $data = array(
-                'id_login' => $last_id,
-                'nama' => $nama,
-                'tgl_lahir' => $tgl_lahir,
-                'jk' => $jk,
-                'pekerjaan' => $pekerjaan,
-                'lulusan' => $lulusan,
-                'bayaran' => $bayaran,
+                'nama_pel' => $nama,
+                'materi' => $materi,
+                'deskripsi' => $deskripsi
             );
 
-                $this->Model_guru->simpan_data($data);
+                $this->Model_pengguna->simpan_data($data);
                 $this->session->set_flashdata('pesan','Ditambahkan');
-                redirect('guru');
+                redirect(base_url('pengguna'));
     
         }
 
         function show($id)
         {
             $where = array('id' =>$id);
-            $data['guru'] = $this->Model_guru->show_data($where)->result();
+            $data['pengguna'] = $this->Model_pengguna->show_data($where)->result();
             $this->load->view('templates/header');
             $this->load->view('templates/navbar-admin');
-            $this->load->view('admin/guru/show',$data);
+            $this->load->view('admin/pengguna/show',$data);
             $this->load->view('templates/footer');
 
-        }
-
-        function show_aksi()
-        {
-            $nama = $this->input->post('nama');
-            $tgl_lahir = $this->input->post('tgl_lahir');
-            $jk = $this->input->post('jk');
-            $pekerjaan= $this->input->post('pekerjaan');
-            $lulusan= $this->input->post('lulusan');
-            $bayaran= $this->input->post('bayaran');
-
-            $data = array(
-                'nama' => $nama,
-                'tgl_lahir' => $tgl_lahir,
-                'jk' => $jk,
-                'pekerjaan' => $pekerjaan,
-                'lulusan' => $lulusan,
-                'bayaran' => $bayaran,
-            );
-    
-                $this->Model_guru->simpan_data($data);
-
-                redirect('guru');
         }
 
         function edit($id)
         {
             $where = array('id' =>$id);
-            $data['guru'] = $this->Model_guru->edit_data($where)->result();
+            $data['pengguna'] = $this->Model_pengguna->edit_data($where)->result();
             $this->load->view('templates/header');
             $this->load->view('templates/navbar-admin');
-            $this->load->view('admin/guru/edit',$data);
+            $this->load->view('admin/pengguna/edit',$data);
             $this->load->view('templates/footer');
 
         }
         
         function edit_aksi()
         {
+            $id = $this->input->post('id');
             $nama = $this->input->post('nama');
-            $tgl_lahir = $this->input->post('tgl_lahir');
-            $jk = $this->input->post('jk');
-            $pekerjaan= $this->input->post('pekerjaan');
-            $lulusan= $this->input->post('lulusan');
-            $bayaran= $this->input->post('bayaran');
+            $materi = $this->input->post('materi');
+            $deskripsi = $this->input->post('deskripsi');
 
             $data = array(
-                'nama' => $nama,
-                'tgl_lahir' => $tgl_lahir,
-                'jk' => $jk,
-                'pekerjaan' => $pekerjaan,
-                'lulusan' => $lulusan,
-                'bayaran' => $bayaran
+                'nama_pel' => $nama,
+                'materi' => $materi,
+                'deskripsi' => $deskripsi
+            );
+            $where = array(
+                'id' => $id
             );
     
-                $this->Model_guru->simpan_data($data);
+                $this->Model_pengguna->update_data($where, $data);
                 $this->session->set_flashdata('pesan','Diubah');
 
     
-                redirect('guru');
+                redirect('pengguna');
 
         }
 
         public function delete($id)
         {
             $where = array('id' =>$id);
-            $this->Model_guru->hapus_data($where);
+            $this->Model_pengguna->hapus_data($where);
             $this->session->set_flashdata('pesan','Dihapus');
-            redirect('guru');
+            redirect('pengguna');
         }
         
     }
