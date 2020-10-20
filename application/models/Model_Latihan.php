@@ -11,10 +11,14 @@
                 'count(lat_soal.id) as Total'
             );
             $this->db->select($select);
-            $this->db->from('materi');
-            $this->db->join('lat_soal', 'materi.id = lat_soal.id_materi', 'left');
+            $this->db->from('lat_soal');
+            $this->db->join('materi', 'lat_soal.id_materi = materi.id ');
+            $this->db->group_by('materi.id');
             $query = $this->db->get();
             return $query->result_array();
+        }
+        function tampil_data1(){
+            return $this->db->get('materi');
         }
     
         function simpan_data($data){
@@ -22,9 +26,13 @@
         }
     
         function show_data($where){
-            return $this->db->get_where('lat_soal',$where);
+            $this->db->select('*');
+            $this->db->from('lat_soal');
+            $this->db->where('id_materi', $where);
+            $query = $this->db->get();
+            return $query->result_array();
         }
-    
+
         function update_data($where,$data){
             $this->db->where($where);
             $this->db->update('lat_soal',$data);
@@ -34,6 +42,31 @@
             $this->db->where($where);
             $this->db->delete('lat_soal',$where);
         }
+
+
+        //latihan
+        function latihan($where,$where1){
+            $this->db->select('*');
+            $this->db->from('lat_soal');
+            $this->db->where('id', $where);
+            $this->db->where('id_materi', $where1);
+            $query = $this->db->get()->row_array();
+            return $query;
+        }
+        function latihan_terakhir($where,$where1){
+            $this->db->select('*');
+            $this->db->from('lat_soal');
+            $this->db->where('id_materi', $where1);
+            $query = $this->db->get()->last_row()->id;
+            return $query;
+        }
+        function Jawaban($data){
+            $this->db->insert('jawaban_user',$data);
+        }
+        function status($data){
+            $this->db->insert('tugas',$data);
+        }
+
 
     }
     

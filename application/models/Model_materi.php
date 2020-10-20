@@ -10,6 +10,13 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+
+        function total_materi(){
+            $this->db->select('count(materi.id) as Total_materi');
+            $this->db->from('materi');
+            $query = $this->db->get();
+            return $query->row();
+        }
     
         function simpan_data($data){
             $this->db->insert('materi',$data);

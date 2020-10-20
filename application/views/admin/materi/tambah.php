@@ -24,7 +24,7 @@
 							</div>
 							<div class="form-group">
 								<label>Deskripsi</label>
-								<textarea name="deskripsi" id="ckeditor" cols="30" rows="10"></textarea>
+								<textarea name="deskripsi" class="ckeditor1" cols="30" rows="10"></textarea>
 							</div>
 						</div>
 					</div>

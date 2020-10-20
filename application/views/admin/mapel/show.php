@@ -15,14 +15,6 @@
 							<label>Nama Pelajaran</label>
 							<input type="text" class="form-control" value="<?= $row->nama_pel;?>" readonly>
 						</div>
-						<div class="form-group">
-							<label>Materi</label>
-							<input type="text" class="form-control" value="<?= $row->materi;?>" readonly>
-						</div>
-						<div class="form-group">
-							<label >Deskripsi</label>
-							<?= $row->deskripsi;?>
-						</div>
 						<a href="<?= base_url('mapel'); ?>" class="btn btn-danger float-right">Kembali</a>
 					</form>
 				</div>

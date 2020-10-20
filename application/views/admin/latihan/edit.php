@@ -18,36 +18,52 @@
                     </div>
                   </div>
                 <?php endif; ?> 
-                <div class="card-header">Edit Data</div>
+                <div class="card-header"><h1>Edit Data</h1></div>
                   <div class="card-body">
-					<?php foreach ($materi as $row) { ?>
-					<form method="post" action="<?= base_url('materi/edit_aksi');?>">
-						<input type="hidden" name="id" value="<?= $row->id; ?>">
+					<form method="post" action="<?= base_url('latihan/edit_aksi');?>">
+						<?php
+						$no = 0; 
+						foreach ($latihan as $row) { 
+						$no++;	?>
+						<input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+						<input type="hidden" name="id_materi[]" value="<?= $row['id_materi']; ?>">
+						<br>
 						<div class="form-group">
-							<label>Nama Pelajaran</label>
-							<select class="form-control" name="mapel">
-								<?php foreach ($mapel as $data) {
-									if($data->id == $row->id){?>
-									<option value="<?= $data->id;?>" selected><?= $data->nama_pel;?></option>
-									<?php }?>
-									<option value="<?= $data->id;?>"><?= $data->nama_pel;?></option>
-								<?php }?>
-							</select>
+							<h4>soal <?= $no?></h4>
+							<textarea name="soal[]" class="ckeditor1" cols="30" rows="10"><?= $row['soal']?></textarea>
 						</div>
-						<div class="form-group">
-							<label>Materi</label>
-							<input type="text" name="materi" class="form-control" value="<?= $row->nama_materi;?>">
-						</div>
-						<div class="form-group">
-							<label >Deskripsi</label>
-							<textarea name="deskripsi" id="ckeditor" cols="30" rows="10"><?= $row->deskripsi;?></textarea>
-							
-						</div>
+						<div class="form-row">
+								<div class="form-group col-md-6">
+									<label>Pilihan A</label>
+									<input type="text" name="a[]" class="form-control" value="<?= $row['pil_a']; ?>" >
+								</div>
+								<div class="form-group col-md-6">
+									<label>Pilihan B</label>
+									<input type="text" name="b[]" class="form-control" value="<?= $row['pil_b']; ?>">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label>Pilihan C</label>
+									<input type="text" name="c[]" class="form-control" value="<?= $row['pil_c']; ?>">
+								</div>
+								<div class="form-group col-md-6">
+									<label>Pilihan D</label>
+									<input type="text" name="d[]" class="form-control" value="<?= $row['pil_d']; ?>">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6 mx-auto">
+									<label>Jawaban</label>
+									<input type="text" name="jawaban[]" class="form-control" value="<?= $row['jawaban']; ?>">
+								</div>
+							</div>
+							<?php } ?>
+					
 						<button type="submit" class="btn btn-primary ">Update data</button>
-						<a href="<?= base_url('materi'); ?>" class="btn btn-danger float-right">Batal/Kembali</a>
+						<a href="<?= base_url('latihan'); ?>" class="btn btn-danger float-right">Batal/Kembali</a>
 					</form>
 				</div>
 			
-		<?php } ?>
 	</div>
 </main>

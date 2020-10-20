@@ -18,6 +18,7 @@
             $user = $this->session->userdata("nama");
             if (isset($_SESSION['nama']) && $user == "admin") {
                 $data['latihan'] = $this->Model_latihan->tampil_data();
+                $data['materi'] = $this->Model_materi->tampil_data();
                 $this->load->view('templates/header');
                 $this->load->view('templates/navbar-admin');
                 $this->load->view('admin/latihan/index', $data);
@@ -43,27 +44,38 @@
 
         function tambah_aksi()
         {
-            $materi = $this->input->post('materi');
-            $latihan= $this->input->post('latihan');
-            $deskripsi= $this->input->post('deskripsi');
+            $soal = $this->input->post('soal');
+            $a = $this->input->post('a');
+            $b = $this->input->post('b');
+            $c = $this->input->post('c');
+            $d = $this->input->post('d');
+            $jawaban= $this->input->post('jawaban');
 
-            $data = array(
-                'id_materi' => $materi,
-                'nama_latihan' => $latihan,
-                'deskripsi' => $deskripsi
-            );
+            $jumlah= $this->input->post('jumlah');
+            $id_materi= $this->input->post('id_materi');
 
-                $this->Model_latihan->simpan_data($data);
+            for ($i=0; $i < $jumlah; $i++) { 
+                $data = array(
+                    'id_materi' => $id_materi[$i],
+                    'soal' => $soal[$i],
+                    'pil_a' => $a[$i],
+                    'pil_b' => $b[$i],
+                    'pil_c' => $c[$i],
+                    'pil_d' => $d[$i],
+                    'jawaban' => $jawaban[$i]
+                );
+                    $this->Model_latihan->simpan_data($data);
+            }
+            
                 $this->session->set_flashdata('pesan','Ditambahkan');
                 redirect(base_url('latihan'));
     
         }
 
-        function show($id)
+        function show($id_materi)
         {
-            $where = array('id' =>$id);
-            $data['latihan'] = $this->Model_latihan->show_data($where)->result();
-            $data['materi'] = $this->Model_materi->tampil_data()->result();
+            $data['latihan'] = $this->Model_latihan->show_data($id_materi);
+            $data['materi'] = $this->Model_latihan->tampil_data1()->result();
             $this->load->view('templates/header');
             $this->load->view('templates/navbar-admin');
             $this->load->view('admin/latihan/show',$data);
@@ -71,11 +83,10 @@
 
         }
 
-        function edit($id)
+        function edit($id_materi)
         {
-            $where = array('id' =>$id);
-            $data['latihan'] = $this->Model_latihan->show_data($where)->result();
-            $data['materi'] = $this->Model_materi->tampil_data()->result();
+            $data['latihan'] = $this->Model_latihan->show_data($id_materi);
+            $data['materi'] = $this->Model_latihan->tampil_data1()->result();
             $this->load->view('templates/header');
             $this->load->view('templates/navbar-admin');
             $this->load->view('admin/latihan/edit',$data);
@@ -86,24 +97,32 @@
         function edit_aksi()
         {
             $id = $this->input->post('id');
-            $materi = $this->input->post('materi');
-            $latihan = $this->input->post('latihan');
-            $deskripsi = $this->input->post('deskripsi');
+            $soal = $this->input->post('soal');
+            $a = $this->input->post('a');
+            $b = $this->input->post('b');
+            $c = $this->input->post('c');
+            $d = $this->input->post('d');
+            $jawaban= $this->input->post('jawaban');
 
-            $data = array(
-                'id_materi' => $materi,
-                'nama_latihan' => $latihan,
-                'deskripsi' => $deskripsi
-            );
-            $where = array(
-                'id' => $id
-            );
-    
-                $this->Model_latihan->update_data($where, $data);
-                $this->session->set_flashdata('pesan','Diubah');
+            $id_materi= $this->input->post('id_materi');
+            $jumlah = count($soal);
+            for ($i=0; $i < $jumlah; $i++) { 
+            $where = array('id' => $id[$i]);  
+                $data = array(
+                    'id_materi' => $id_materi[$i],
+                    'soal' => $soal[$i],
+                    'pil_a' => $a[$i],
+                    'pil_b' => $b[$i],
+                    'pil_c' => $c[$i],
+                    'pil_d' => $d[$i],
+                    'jawaban' => $jawaban[$i]
+                );
+                $this->Model_latihan->update_data($where,$data);
 
-    
-                redirect('latihan');
+            }
+            
+                $this->session->set_flashdata('pesan','Ditambahkan');
+                redirect(base_url('latihan'));
 
         }
 

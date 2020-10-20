@@ -6,16 +6,17 @@
 					<h3>Menambah Data</h3>  
 				</div>
 			</div>
-			<form method="post" action="<?= base_url('Materi/tambah_aksi');?>">
+			<form method="post" action="<?= base_url('Latihan/tambah_aksi');?>">
 
-			<input type="hidden" name="id_materi" value="<?= $id_materi?>">
+			<input type="hidden" name="jumlah" value="<?= $jumlah?>">
 			<?php for ($i=1; $i <= $jumlah ; $i++) { ?>
+			<input type="hidden" name="id_materi[]" value="<?= $id_materi?>">
 				<div class="card">
 					<div class="card-body">
 						<!-- form tambah guru-->
 							<div class="form-group">
 								<label>soal</label>
-								<textarea name="deskripsi[]" class="ckeditor1" cols="30" rows="10"></textarea>
+								<textarea name="soal[]" class="ckeditor1" cols="30" rows="10"></textarea>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
@@ -47,7 +48,7 @@
 					</div>
 					<?php }?>
 					<button type="submit" class="btn btn-primary">Simpan</button>
-					<a href="<?= base_url('Materi'); ?>" class="btn btn-danger">Batal</a>
+					<a href="<?= base_url('Latihan'); ?>" class="btn btn-danger">Batal</a>
 				</form>
 			</div>
 		</main>

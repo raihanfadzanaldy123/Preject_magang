@@ -39,13 +39,9 @@
         function tambah_aksi()
         {
             $nama = $this->input->post('nama');
-            $materi= $this->input->post('materi');
-            $deskripsi= $this->input->post('deskripsi');
 
             $data = array(
-                'nama_pel' => $nama,
-                'materi' => $materi,
-                'deskripsi' => $deskripsi
+                'nama_pel' => $nama
             );
 
                 $this->Model_mapel->simpan_data($data);
@@ -80,13 +76,9 @@
         {
             $id = $this->input->post('id');
             $nama = $this->input->post('nama');
-            $materi = $this->input->post('materi');
-            $deskripsi = $this->input->post('deskripsi');
 
             $data = array(
-                'nama_pel' => $nama,
-                'materi' => $materi,
-                'deskripsi' => $deskripsi
+                'nama_pel' => $nama
             );
             $where = array(
                 'id' => $id

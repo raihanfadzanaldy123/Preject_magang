@@ -55,17 +55,14 @@
                                         <?php
                                             $no = 1;
                                             foreach ($latihan as $row) {
-                                                if($row['Total'] == 0 ){
-                                                    continue;
-                                                }
                                         ?>
                                             <tr>
                                                 <td class="text-center"><?= $no; ?></td>
                                                 <td><?= $row['nama_materi']; ?></td>
                                                 <td><?= $row['Total'] ?></td>
                                                 <td>
-                                                    <a href="<?= base_url('Latihan/show/').$row['id'];?>" class="btn btn-info">Show</a>
-                                                    <a href="<?= base_url('Latihan/edit/').$row['id'];?>" class="btn btn-warning">Edit</a>
+                                                    <a href="<?= base_url().'Latihan/show/'.$row['id_materi'];?>" class="btn btn-info">Show</a>
+                                                    <a href="<?= base_url('Latihan/edit/').$row['id_materi'];?>" class="btn btn-warning">Edit</a>
                                                     <a href="<?= base_url('Latihan/delete/').$row['id'];?>" class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
@@ -109,8 +106,8 @@
             <div class="form-group">
                 <label>Nama materi</label>
                     <select class="form-control" name="id_materi">
-                    <?php foreach ($latihan as $row) {?>
-                        <option value="<?= $row['id_materi'];?>"><?= $row['nama_materi'];?></option>
+                    <?php foreach ($materi as $data) {?>
+                        <option value="<?= $data['id'];?>"><?= $data['nama_materi'];?></option>
                     <?php }?>
                     </select>
             </div>

@@ -27,20 +27,10 @@
 							<label>Nama Pelajaran</label>
 							<input type="text" name="nama" class="form-control" value="<?= $row->nama_pel;?>">
 						</div>
-						<div class="form-group">
-							<label>Materi</label>
-							<input type="text" name="materi" class="form-control" value="<?= $row->materi;?>">
-						</div>
-						<div class="form-group">
-							<label >Deskripsi</label>
-							<textarea name="deskripsi" id="ckeditor" cols="30" rows="10"><?= $row->deskripsi;?></textarea>
-							
-						</div>
 						<button type="submit" class="btn btn-primary ">Update data</button>
 						<a href="<?= base_url('mapel'); ?>" class="btn btn-danger float-right">Batal/Kembali</a>
 					</form>
 				</div>
-			
 		<?php } ?>
 	</div>
 </main>

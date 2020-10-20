@@ -36,9 +36,16 @@
                 );
             $cek = $this->Model_login->login($where)->num_rows();
             $name = $this->Model_login->login_where($where);
+            $id = $this->Model_login->login_where_id($where);
+            $where = array(
+                'id_login' => $id
+            );
+            $id_pengguna = $this->Model_login->pengguna_where_id($where);
+            var_dump($id);
             if($cek > 0){
     
                 $data_session = array(
+                    'id_pengguna' => $id_pengguna,
                     'nama' => $name,
                     'email' => $email,
                     'status' => "login"
@@ -60,12 +67,12 @@
             }
         }
 
-        // function register()
-        // {
-        //     $this->load->view('templates/header');
-        //     $this->load->view('login/register');
-        //     $this->load->view('templates/footer');
-        // }
+        function register()
+        {
+            $this->load->view('templates/header');
+            $this->load->view('login/register');
+            $this->load->view('templates/footer');
+        }
 
         function register_action()
         {

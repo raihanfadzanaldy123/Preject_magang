@@ -16,9 +16,9 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="<?=base_url()?>">Home</a></li>
-                                        <li><a href="<?=base_url('Home/pelajaran')?>">Courses</a></li>
-                                        <li><a href="<?=base_url('Home/tentang')?>">About</a></li>
-                                        <li><a href="<?=base_url('Home/kontak')?>">Contact</a></li>
+                                        <li><a href="<?=base_url('Home/pelajaran')?>">Pelajaran</a></li>
+                                        <li><a href="<?=base_url('Home/tentang')?>">Tentang</a></li>
+                                        <li><a href="<?=base_url('Home/kontak')?>">kontak</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -35,14 +35,14 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="<?= base_url('Home/profil')?>">profil</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="<?= base_url('Login/logout')?>">Logout</a>
+                                            <a class="dropdown-item" href="<?= base_url('Login/logout')?>">Keluar</a>
                                         </div>
                                     </div>
                                 <?php }
                                     else if(empty($_SESSION['nama'])){ ?>
                                 <a href="#test-form" class="login popup-with-form">
                                     <i class="flaticon-user"></i>
-                                    <span>log in</span>
+                                    <span>Masuk</span>
                                 </a>
                                 <?php }?>
                             </div>
