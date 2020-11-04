@@ -11,15 +11,33 @@
     <div class="about_area">
         <div class="container">
             <div class="row">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="single_about_info">
-                        <h2>Nama : <?= $pengguna->nama ?></h2>
-                        <h2>Email : <?= $pengguna->email ?></h2>
-                        <h2>No.hp : <?= $pengguna->hp ?></h2>
-                        <a href="<?= base_url('Profil/tampil_profil') ?>" class="boxed_btn">Edit Profil</a>
-                    </div>
+                <div class="col-5 ">
+                    <h1>
+                        <legend>Edit Profil</legend>
+                    </h1>
+                    <form action="edumark/profil" method="POST">
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->nama; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->email; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">No. HP</label>
+                            <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->hp; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Simpan" name="save" class=" btn btn-info btn-block">
+                        </div>
+
+                    </form>
                 </div>
-                <div class="col-xl-6 offset-xl-1 col-lg-6">
+                <!-- <div class="col-xl-6 offset-xl-1 col-lg-6">
                     <div class="about_tutorials">
                         <div class="courses">
                             <div class="inner_courses">
@@ -48,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
