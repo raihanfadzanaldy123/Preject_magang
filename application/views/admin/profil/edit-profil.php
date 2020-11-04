@@ -15,20 +15,20 @@
                     <h1>
                         <legend>Edit Profil</legend>
                     </h1>
-                    <form action="edumark/profil" method="POST">
+                    <form action="<?= base_url('Profil/edit_aksi/' . $_SESSION['id_pengguna']) ?>" method="POST">
                         <div class="form-group">
                             <label for="">Nama</label>
                             <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->nama; ?>">
                         </div>
-
+                        <input type="hidden" name="id" value="<?= $pengguna->id ?>">
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->email; ?>">
+                            <input type="text" name="email" class="form-control" id="" value="<?= $pengguna->email; ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="text" name="nama" class="form-control" id="" value="<?= $pengguna->hp; ?>">
+                            <input type="text" name="hp" class="form-control" id="" value="<?= $pengguna->hp; ?>">
                         </div>
 
                         <div class="form-group">

@@ -54,7 +54,7 @@
                 $this->Model_pengguna->update_data($where, $data);
                 $this->session->set_flashdata('pesan','Diubah');
 
-                redirect('profil');
+                redirect( base_url('Home/profil/'.$_SESSION['id_pengguna']));
     }
 
     
