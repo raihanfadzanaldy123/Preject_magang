@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-3 col-md-6 col-lg-6">
+                <!-- <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon">
                             <i class="flaticon-art-and-design"></i>
@@ -160,13 +160,13 @@
                             allows for all aspects of
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon">
                             <i class="flaticon-premium"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Kelas Reguler</h3>
                         <p>
                             Your domain control panel is designed for ease-of-use <br> and <br>
                             allows for all aspects of

@@ -102,5 +102,12 @@ class Home extends CI_Controller
         }
     }
 
+    function transaksi()
+    {
+        $this->load->view('templates/header-index');
+        $this->load->view('templates/navbar-index');
+        $this->load->view('edumark/transaksi');
+        $this->load->view('templates/footer-index');
+    }
     
 }

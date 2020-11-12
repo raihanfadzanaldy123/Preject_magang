@@ -34,10 +34,12 @@
                         <div class="form-group">
                             <input type="submit" value="Simpan" name="save" class=" btn btn-info btn-block">
                         </div>
-
+                        <div class="icon">
+                            <i class="flaticon-art-and-design"></i>
+                        </div>
                     </form>
                 </div>
-                <!-- <div class="col-xl-6 offset-xl-1 col-lg-6">
+                <div class="col-xl-6 offset-xl-1 col-lg-6">
                     <div class="about_tutorials">
                         <div class="courses">
                             <div class="inner_courses">
@@ -66,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -208,7 +210,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-3 col-md-6 col-lg-6">
+                <!-- <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon">
                             <i class="flaticon-art-and-design"></i>
@@ -225,22 +227,20 @@
                         <div class="icon blue">
                             <i class="flaticon-business-and-finance"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Kelas Reguler</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Kelas Reguler
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon">
                             <i class="flaticon-premium"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Kelas Reguler</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Kelas Premium
                         </p>
                     </div>
                 </div>
@@ -251,8 +251,7 @@
                         </div>
                         <h3>Premium Quality</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            kelas Premium
                         </p>
                     </div>
                 </div>

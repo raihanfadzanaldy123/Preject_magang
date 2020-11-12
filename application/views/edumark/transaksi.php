@@ -1,6 +1,6 @@
     <!-- bradcam_area_start -->
     <div class="bradcam_area breadcam_bg overlay2">
-        <h3>Profil Pengguna</h3>
+        <h3>Profil</h3>
     </div>
     <!-- bradcam_area_end -->
 
@@ -11,14 +11,11 @@
     <div class="about_area">
         <div class="container">
             <div class="row">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="single_about_info">
-                        <h2>Nama : <?= $pengguna->nama ?></h2>
-                        <h2>Email : <?= $pengguna->email ?></h2>
-                        <h2>No.hp : <?= $pengguna->hp ?></h2>
-                        <a href="<?= base_url('Profil/tampil_profil') ?>" class="boxed_btn">Edit Profil</a>
-                        <a href="<?= base_url('Home/transaksi') ?>" class="boxed_btn">Transaksi</a>
-                    </div>
+                <div class="col-5 ">
+                    <h1>
+                        <legend>Edit Profil</legend>
+                    </h1>
+                    
                 </div>
                 <div class="col-xl-6 offset-xl-1 col-lg-6">
                     <div class="about_tutorials">
@@ -53,22 +50,175 @@
             </div>
         </div>
     </div>
-    <!-- about_area_end --> 
+    <!-- about_area_end -->
+
+    <!-- our_team_member_start -->
+    <div class="our_team_member">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-lg-3">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="img/team/1.png" alt="">
+                            <div class="social_link">
+                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="master_name text-center">
+                            <h3>Macau Wilium</h3>
+                            <p>Massage Master</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-3">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="img/team/2.png" alt="">
+                            <div class="social_link">
+                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="master_name text-center">
+                            <h3>Dan Jacky</h3>
+                            <p>Mens Cut</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-3">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="img/team/3.png" alt="">
+                            <div class="social_link">
+                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="master_name text-center">
+                            <h3>Luka Luka</h3>
+                            <p>Mens Cut</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-3">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="img/team/4.png" alt="">
+                            <div class="social_link">
+                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="master_name text-center">
+                            <h3>Rona Dana</h3>
+                            <p>Ladies Cut</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- our_team_member_end -->
+
+    <!-- testimonial_area_start -->
+    <div class="testimonial_area testimonial_bg_1 overlay">
+        <div class="testmonial_active owl-carousel">
+            <div class="single_testmoial">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="testmonial_text text-center">
+                                <div class="author_img">
+                                    <img src="img/testmonial/author_img.png" alt="">
+                                </div>
+                                <p>
+                                    "Working in conjunction with humanitarian aid <br> agencies we have supported
+                                    programmes to <br>
+                                    alleviate.
+                                    human suffering.
+
+                                </p>
+                                <span>- Jquileen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_testmoial">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="testmonial_text text-center">
+                                <div class="author_img">
+                                    <img src="img/testmonial/author_img.png" alt="">
+                                </div>
+                                <p>
+                                    "Working in conjunction with humanitarian aid <br> agencies we have supported
+                                    programmes to <br>
+                                    alleviate.
+                                    human suffering.
+
+                                </p>
+                                <span>- Jquileen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonial_area_end -->
 
     <!-- our_courses_start -->
     <div class="our_courses">
         <div class="container">
             <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <h3>Our Course Speciality</h3>
+                        <p>Your domain control panel is designed for ease-of-use and <br>
+                            allows for all aspects of your domains.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_course text-center">
+                        <div class="icon">
+                            <i class="flaticon-art-and-design"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>
+                            Your domain control panel is designed for ease-of-use <br> and <br>
+                            allows for all aspects of
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_course text-center">
+                        <div class="icon blue">
+                            <i class="flaticon-business-and-finance"></i>
+                        </div>
+                        <h3>Kelas Reguler</h3>
+                        <p>
+                            Kelas Reguler
+                        </p>
+                    </div>
+                </div> -->
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon">
                             <i class="flaticon-premium"></i>
                         </div>
-                        <h3>Kelas Reguler </h3>
+                        <h3>Kelas Reguler</h3>
                         <p>
-                            Kelas Reguler <br>
-                            Kelas Reguler <br>
-                            Kelas Reguler <br> <br> <br> <br>
+                            Kelas Premium
                         </p>
                     </div>
                 </div>
@@ -77,11 +227,9 @@
                         <div class="icon gradient">
                             <i class="flaticon-crown"></i>
                         </div>
-                        <h3>Kelas Premium </h3>
+                        <h3>Premium Quality</h3>
                         <p>
-                            Kelas Premium
-                            Kelas Premium
-                            Kelas Premium
+                            kelas Premium
                         </p>
                     </div>
                 </div>
